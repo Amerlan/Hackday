@@ -18,7 +18,10 @@ class CreateProjectIdeasTable extends Migration
             $table->string('name');
             $table->string('subject');
             $table->string('description');
+            $table->boolean('taken')->default(0);
+            $table->integer('orgtype')->unsigned()->default(2);
             $table->timestamps();
+            $table->foreign('orgtype')->references('id')->on('organization_types');
         });
     }
 

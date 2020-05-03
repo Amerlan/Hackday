@@ -17,11 +17,11 @@ class CreateConferencesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->date('when');
-            $table->boolean('format');
-            $table->string('location');
-            $table->string('orgId');
+            $table->string('image');
+            $table->date('date');
+            $table->integer('orgtype')->unsigned()->default(4);
             $table->timestamps();
+            $table->foreign('orgtype')->references('id')->on('organization_types');
         });
     }
 

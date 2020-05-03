@@ -17,11 +17,13 @@ class CreateStartupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->integer('members');
+            $table->integer('members')->unsigned();
             $table->string('founder');
             $table->string('subject');
-            $table->integer('capitalization');
+            $table->integer('capitalization')->unsigned();
+            $table->integer('orgtype')->unsigned()->default(3);
             $table->timestamps();
+            $table->foreign('orgtype')->references('id')->on('organization_types');
         });
     }
 
