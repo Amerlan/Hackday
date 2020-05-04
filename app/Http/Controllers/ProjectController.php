@@ -18,59 +18,36 @@ class ProjectController extends Controller
 
     public function create($name, $subject, $description)
     {
-      ProjectIdea::insert([
-        'name' => $name,
-        'subject' => $subject,
-        'description' => $description,
-      ]);
+      $proj = new ProjectIdea;
+        $proj->name = $name;
+        $proj->subject = $subject;
+        $proj->description = $description;
+        $proj->save();
+      return $this->index();
     }
 
-    
-    public function store(Request $request)
+    public function home()
     {
-        //
+      $data = ProjectIdea::paginate(2);
+      return view('ideas', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show_detail($id)
     {
-        //
+        return ProjectIdea::where('id', $id)->get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

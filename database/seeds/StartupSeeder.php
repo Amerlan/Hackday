@@ -17,7 +17,7 @@ class StartupSeeder extends Seeder
         'description' => 'Разрабатываем отечественные изобретения',
         'members' => 4,
         'founder' => 'John Doe',
-        'subject' => 'IT/Physics',
+        'subject' => 'IT+Physics',
         'capitalization' => 0,
       ]);
       DB::table('startups')->insert([
@@ -25,7 +25,7 @@ class StartupSeeder extends Seeder
         'description' => 'Создание детских развивающих игр',
         'members' => 2,
         'founder' => 'Jane Doe',
-        'subject' => 'IT/Media',
+        'subject' => 'IT+Media',
         'capitalization' => 1000,
       ]);
       DB::table('startups')->insert([

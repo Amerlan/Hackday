@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
           ClubSeeder::class,
           StartupSeeder::class,
           ProjectSeeder::class,
+          ConferenceSeeder::class,
           EventSeeder::class,
                     ]);
     }

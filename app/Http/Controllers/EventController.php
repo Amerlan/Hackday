@@ -21,70 +21,49 @@ class EventController extends Controller
 
     public function create($title, $description, $when, $location, $orgtype, $orgid)
     {
-      Event::insert([
-        'title' => $title,
-        'description' => $description,
-        'when' => Carbon::create($when),
-        'location' => $location,
-        'orgtype' => $orgtype,
-        'orgId' => $orgid,
-    ]);
+      $event = new Event;
+        $event->title = $title;
+        $event->description = $description;
+        $event->when = Carbon::create($when);
+        $event->location = $location;
+        $event->orgtype = $orgtype;
+        $event->orgId = $orgid;
+        $event->save();
       return $this->index();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function home()
     {
-        //
+      $data = Event::where('when','>',date("Y-m-d"))->orderBy('when','asc')->paginate(5);
+
+      return view('home', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show_detail($id)
     {
-        //
+        $data = Event::where('id', $id)->get();
+        return response()->json($data, 200, $this->headers, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function last($amount)
     {
-        //
+        $data = Event::orderBy('when', 'desc')->take($amount)->get();
+        return response()->json($data, 200, $this->headers, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function search_all($orgtype, $id)
     {
-        //
+        $data = Event::where([['orgtype', '=', $orgtype],['orgid', '=', $id]])->get();
+        return response()->json($data, 200, $this->headers, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function search($orgtype)
     {
-        //
+        $data = Event::where('orgtype', $orgtype)->get();
+        return response()->json($data, 200, $this->headers, JSON_UNESCAPED_UNICODE);
     }
 }

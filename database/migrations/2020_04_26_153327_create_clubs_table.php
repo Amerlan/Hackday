@@ -16,13 +16,13 @@ class CreateClubsTable extends Migration
         Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('members')->unsigned();
             $table->string('leader');
-            $table->string('subleader');
+            $table->string('subleader')->nullable();
             $table->integer('orgtype')->unsigned()->default(1);
             $table->timestamps();
-            
+
             $table->foreign('orgtype')->references('id')->on('organization_types');
         });
     }

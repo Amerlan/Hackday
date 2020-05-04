@@ -12,7 +12,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
           $table->id();
           $table->string('title');   # title of event
-          $table->string('description')->nullable();  # description of event
+          $table->longText('description')->nullable();  # description of event
           $table->date('when');  # date of event
           $table->boolean('format')->default(1); # online/offline
           $table->string('location'); # where event will be

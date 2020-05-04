@@ -18,13 +18,14 @@ class ClubController extends Controller
 
     public function create($name,$descr,$members,$lead,$sublead)
     {
-      Club::insert([
-        'name' => $name,
-        'description'=> $descr,
-        'members' => $members,
-        'leader' => $lead,
-        'subleader' => $sublead,
-    ]);
+        $club = new Club;
+        $club->name = $name;
+        $club->description = $descr;
+        $club->members = $members;
+        $club->leader = $lead;
+        $club->subleader = $sublead;
+        $club->save();
+
     return $this->index();
     }
 
@@ -33,29 +34,18 @@ class ClubController extends Controller
     {
 
      return Club::where('id', $id)->get();
-      #$club =
-      #return $club;
-      #$headers = [ 'Content-Type' => 'application/json; charset=utf-8' ];
-      #return response()->json($club, 200, $headers, JSON_UNESCAPED_UNICODE);
     }
 
 
-    public function show($id)
+    public function all()
     {
-        //
+        $data = Club::paginate(2);
+
+        return view('organizations', compact('data'));
     }
 
 
-    public function edit($id)
-    {
-        //
-    }
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
 
     public function destroy($id)

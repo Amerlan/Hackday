@@ -16,9 +16,10 @@ class CreateConferencesTable extends Migration
         Schema::create('conferences', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->string('image');
             $table->date('date');
+            $table->string('location');
             $table->integer('orgtype')->unsigned()->default(4);
             $table->timestamps();
             $table->foreign('orgtype')->references('id')->on('organization_types');

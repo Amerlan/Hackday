@@ -12,6 +12,7 @@ class ProjectSeeder extends Seeder
          'name' => 'DL ecosystem',
          'subject' => 'Web Programming',
          'description' => 'Разработать экосистему связующую все информационные ресурсы университета',
+         'taken' =>1,
        ]);
        DB::table('project_ideas')->insert([
          'name' => 'E-library',

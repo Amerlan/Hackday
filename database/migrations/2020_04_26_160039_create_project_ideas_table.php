@@ -17,7 +17,7 @@ class CreateProjectIdeasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('subject');
-            $table->string('description');
+            $table->longText('description')->nullable();
             $table->boolean('taken')->default(0);
             $table->integer('orgtype')->unsigned()->default(2);
             $table->timestamps();

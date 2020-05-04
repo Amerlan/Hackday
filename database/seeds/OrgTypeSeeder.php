@@ -5,11 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 class OrgTypeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
       DB::table('organization_types')->insert([

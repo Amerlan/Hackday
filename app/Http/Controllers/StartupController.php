@@ -16,31 +16,29 @@ class StartupController extends Controller
     }
 
 
-    public function create()
+    public function create($name, $description, $members, $founder, $subject, $capitalization)
     {
-        //
+        $startup = new Startup;
+        $startup->name = $name;
+        $startup->description = $description;
+        $startup->members = $members;
+        $startup->founder = $founder;
+        $startup->subject = $subject;
+        $startup->capitalization = $capitalization;
+        $startup->save();
+      return $this->index();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function home()
     {
-        //
+      $data = Startup::paginate(2);
+
+      return view('startups', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show_detail($id)
     {
-        //
+        return Startup::where('id', $id)->get();
     }
 
     /**
