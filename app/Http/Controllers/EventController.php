@@ -35,7 +35,7 @@ class EventController extends Controller
 
     public function home()
     {
-      $data = Event::where('when','>',date("Y-m-d"))->orderBy('when','asc')->paginate(5);
+      $data = Event::where('when','>=',date("Y-m-d"))->orderBy('when','asc')->paginate(5);
 
       return view('home', compact('data'));
     }
@@ -65,5 +65,10 @@ class EventController extends Controller
     {
         $data = Event::where('orgtype', $orgtype)->get();
         return response()->json($data, 200, $this->headers, JSON_UNESCAPED_UNICODE);
+    }
+    public function event_detail($id)
+    {
+      $data = Event::where('id', $id)->get();
+      return view('event', compact('data'));
     }
 }

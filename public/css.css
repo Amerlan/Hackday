@@ -1,5 +1,14 @@
 /*Main CSS*/
-
+.topright_img{
+  float: right;
+  display: inline-block;
+}
+.fordesc{
+  text-align: left;
+}
+.fortitle{
+  text-align: center;
+}
 
 /*Login Signup Page*/
 .nottaken{

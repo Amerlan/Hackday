@@ -3,7 +3,7 @@
 <div class="user-dashboard">
     <h1>Events</h1>
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
+        <div class="col-md-8 col-sm-8 col-xs-12 gutter">
 
             <div class="sales">
                 <h2>Upcoming events</h2>
@@ -12,7 +12,7 @@
             @foreach($data as $elem)
             <div class="sales">
               <div>
-                <h2><a href = '#'>{{$elem->title}}</a></h2>
+                <h2><a href = {{ route('detail',['id' => $elem->id]) }}>{{$elem->title}}</a></h2>
                 <br><br>
                 <span>{{$elem->description}}</span>
                 <div>

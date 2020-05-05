@@ -3,7 +3,6 @@
 <div class="user-dashboard">
   <h2> Organizations of our University</h2>
 <div class="row">
-  {{$data->links()}}
 <div class="col-md-10 col-sm-10 col-xs-12 gutter">
 @foreach($data as $elem)
   <div class="sales">
@@ -20,5 +19,6 @@
     </div>
 
   </div>
+  {{$data->links()}}
 </div>
 @endsection

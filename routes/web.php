@@ -28,10 +28,13 @@ Route::get('/conferences/all', 'ConferenceController@index');
 Route::get('/conference_create/{title}/{description}/{image}/{date}/{location}', 'ConferenceController@create');
 Route::get('/conferences/{id}', 'ConferenceController@show_detail');
 
-Route::get('/','EventController@home');
+
+Route::get('/event/detail/{id}',['uses'=>'EventController@event_detail', 'as'=>'detail']);
 Route::get('home','EventController@home');
+Route::post('home','EventController@home');
 Route::get('organizations','ClubController@all');
 Route::get('conferences','ConferenceController@home');
 Route::get('projects','ProjectController@home');
 Route::get('startups', 'StartupController@home');
-Route::get('/test','SearchController@index');
+Route::get('/calendar','SearchController@index');
+Route::redirect('/','/home');

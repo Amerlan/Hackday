@@ -20,7 +20,7 @@ class ConferenceSeeder extends Seeder
         'location' => 'Conference Hall, 2 floor',
     ]);
       DB::table('conferences')->insert([
-        'title' => 'Rector\' meeting with students ',
+        'title' => 'Rectors meeting with students ',
         'description'=> 'Meeting for discussion problem',
         'image' => 'https://sun9-23.userapi.com/c857736/v857736064/1f06fd/pRPPETAjuFQ.jpg',
         'date' => Carbon::create('17-05-2020'),
