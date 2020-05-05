@@ -1,0 +1,8 @@
+http://127.0.0.1:8000/event_create/Субботник/уборка%20будет/5-05-2019/Универ/5/0   # create event
+http://127.0.0.1:8000/club_create/PVP/onefight/9/Amerlan/Amirzhan                # create club
+http://127.0.0.1:8000/startup_create/BikeShare/Our%20project%20helps%20people/3/Ecoman/IT+Sport/6000  #create startup
+http://127.0.0.1:8000/conference_create/Встреча%20акционеров/Встреча%20акционеров%20АО%20МУИТ/1.png/08-05-2020/901%20кабинет # create conference
+http://127.0.0.1:8000/project_create/Smart%20City/Innovative%20IT/Создание%20концепта%20умного%20города   # create project idea
+
+
+
